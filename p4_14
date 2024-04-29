@@ -1,0 +1,32 @@
+Create a Java program that prompts the user to enter
+two numbers, and then divides the first number by the
+second number.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        system.out.println("memdavadi riddhi , 220130318035");
+        System.out.println("Enter the first number:");
+        double num1 = scanner.nextDouble();
+
+        System.out.println("Enter the second number:");
+        double num2 = scanner.nextDouble();
+
+        try {
+            double result = divide(num1, num2);
+            System.out.println("Result of division: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero");
+        }
+
+        scanner.close();
+    }
+
+    public static double divide(double numerator, double denominator) {
+        if (denominator == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+        return numerator / denominator;
+    }
+}
