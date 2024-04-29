@@ -1,0 +1,74 @@
+Write a Java program that creates a thread that performs
+a long-running task (e.g. sorting a large list). Use a
+separate thread to display a progress bar that updates
+every second, indicating the percentage of the task that
+has been completed.
+class LongRunningTaskThread extends Thread {
+    private int[] list;
+
+    public LongRunningTaskThread(int[] list) {
+        this.list = list;
+    }
+
+    public void run() {
+        // Simulate a long-running task (sorting a large list)
+        // For demonstration purposes, we just sleep for 5 seconds
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class ProgressBarThread extends Thread {
+    private int totalTasks;
+
+    public ProgressBarThread(int totalTasks) {
+        this.totalTasks = totalTasks;
+    }
+
+    public void run() {
+        for (int i = 0; i <= totalTasks; i++) {
+            // Calculate the percentage of completion
+            int percentage = (i * 100) / totalTasks;
+
+            // Display the progress bar
+            System.out.print("\rProgress: [" + repeatString("=", percentage) + repeatString(" ", 100 - percentage) + "] " + percentage + "%");
+
+            // Sleep for 1 second
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("\nTask completed!");
+    }
+
+    // Helper method to repeat a string
+    private String repeatString(String str, int count) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            sb.append(str);
+        }
+        return sb.toString();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        system.out.println("memdavadi riddhi, 220130318035");
+        int[] list = {5, 2, 7, 1, 9, 3}; // Sample list
+        int totalTasks = list.length;
+
+        LongRunningTaskThread taskThread = new LongRunningTaskThread(list);
+        ProgressBarThread progressBarThread = new ProgressBarThread(totalTasks);
+
+        // Start the task thread
+        taskThread.start();
+
+        // Start the progress bar thread
+        progressBarThread.start();
+    }
+}
