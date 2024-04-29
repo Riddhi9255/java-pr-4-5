@@ -1,0 +1,26 @@
+Write a Java program that reads in integers from the user
+until they enter a non-numeric value. Use exception
+handling to catch any input that is not an integer and
+display an error message to the user.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter integers (enter any non-numeric value to stop):");
+
+        while (true) {
+            try {
+                int num = scanner.nextInt();
+                System.out.println("You entered: " + num);
+                System.out.println("memdavadi riddhi 220130318035");
+            } catch (Exception e) {
+                System.out.println("Error: Please enter a valid integer.");
+                break;
+            }
+        }
+
+        scanner.close();
+    }
+}
