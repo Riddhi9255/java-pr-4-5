@@ -1,0 +1,54 @@
+Implement exception handling to handle the following
+scenarios:
+ If the user enters non-numeric characters,
+display an error message and prompt the user to
+enter the numbers again.
+ If the user tries to divide by zero, display an error
+message and prompt the user to enter the
+number again.
+ If any other exception occurs, display an error
+message and terminate the program.
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double num1, num2;
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                System.out.println("memdavadi riddhi , 220130318035");
+                System.out.println("Enter the first number:");
+                num1 = scanner.nextDouble();
+
+                System.out.println("Enter the second number:");
+                num2 = scanner.nextDouble();
+
+                double result = divide(num1, num2);
+                System.out.println("Result of division: " + result);
+                validInput = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Please enter numeric characters only.");
+                scanner.nextLine(); // Clear the input buffer
+            } catch (ArithmeticException e) {
+                System.out.println("Error: Division by zero. Please enter the second number again.");
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+                System.exit(1); // Terminate the program
+            }
+        }
+
+        scanner.close();
+    }
+
+    public static double divide(double numerator, double denominator) {
+        if (denominator == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+        return numerator / denominator;
+    }
+}
