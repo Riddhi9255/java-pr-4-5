@@ -1,0 +1,16 @@
+Write a Java program of ArrayIndexOutOfBound
+Exception in Java with example.
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+
+        try {
+            // Accessing an element outside the array bounds
+            int value = arr[5];
+            System.out.println("Value at index 5: " + value);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException caught: " + e.getMessage());
+             System.out.println("memdavadi riddhi , 2201030318035");
+        }
+    }
+}
