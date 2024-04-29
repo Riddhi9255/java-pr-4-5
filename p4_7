@@ -1,0 +1,55 @@
+Write a Java program that executes three threads. One
+thread displays “Thread-I” every 2500 milisecond, second
+thread displays “Thread-II” every 5000 milisecond and
+third thread displays “Thread-III” every 7500 milisecond.
+
+class ThreadOne extends Thread {
+    public void run() {
+        while (true) {
+            System.out.println("Thread-I");
+            try {
+                Thread.sleep(2500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+class ThreadTwo extends Thread {
+    public void run() {
+        while (true) {
+            System.out.println("Thread-II");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+class ThreadThree extends Thread {
+    public void run() {
+        while (true) {
+            System.out.println("Thread-III");
+            try {
+                Thread.sleep(7500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ThreadOne thread1 = new ThreadOne();
+        ThreadTwo thread2 = new ThreadTwo();
+        ThreadThree thread3 = new ThreadThree();
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
+    }
+}
