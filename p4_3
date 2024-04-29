@@ -1,0 +1,30 @@
+Write a program in Java to develop user defined
+exception for ‘Divide by Zero’ error
+class DivideByZeroException extends Exception {
+    public DivideByZeroException() {
+        super("Error: Division by zero");
+    }
+}
+
+class Calculator {
+    public static double divide(double numerator, double denominator) throws DivideByZeroException {
+        if (denominator == 0) {
+            throw new DivideByZeroException();
+        }
+        return numerator / denominator;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        double numerator = 10.0;
+        double denominator = 0.0;
+
+        try {
+            double result = Calculator.divide(numerator, denominator);
+            System.out.println("Result of division (Enrollment No. 220130318035): " + result);
+        } catch (DivideByZeroException e) {
+            System.out.println("Enrollment No. 220130318035: memdavdi riddhi  " + e.getMessage());
+        }
+    }
+}
